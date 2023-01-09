@@ -4,7 +4,7 @@ $('#currentDay').text(dayjs().format("[Today is:] dddd, MMMM D YYYY h:mm:ss"));
 
 
   $('.saveBtn').on('click', function(params) {
-    console.log('this is what i clicked');
+    console.log('i clicked the save button');
 
     //get the id atribute and the descriptions in the calender
     var id = $(this).parent().attr('id');
