@@ -1,4 +1,4 @@
-# 5-Doms-Work-Scheduler
+# 5-Doms-Workday-Scheduler
 
 ## Purpose 
 
