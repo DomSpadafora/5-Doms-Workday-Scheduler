@@ -1,31 +1,29 @@
 
 //Display today's date and what day it is
-$('#currentDay').text(dayjs().format("[Today is:] dddd, MMMM D YYYY h:mm:ss"));
+$('#currentDay').text(dayjs().format("[Today is:] dddd, MMMM D, YYYY"));
+
+if(localStorage.hours) {
+  let store = JSON.parse(localStorage.hours);
+
+  for (let i = 0; i < store.length; i++) {
+    $('textarea').eq(i).val(store[i])
+  }
+}
 
 
   $('.saveBtn').on('click', function(params) {
     console.log('i clicked the save button');
 
-    //get the id atribute and the descriptions in the calender
-    var id = $(this).parent().attr('id');
-    var text = $(this).siblings('.description').val();
+    let store = [];
 
-    //Store descriptions to local storage
-    localStorage.setItem(id, text);
+    for (let i = 0; i < $('textarea').length; i++) {
+      store.push($('textarea').eq(i).val());
+    };
+
+    localStorage.hours = JSON.stringify(store);
   });
 
   //Get item from local storage if there 
-  $('#hour8 .description').val(localStorage.getItem('hour 8'));
-  $('#hour9 .description').val(localStorage.getItem('hour 9'));
-  $('#hour10 .description').val(localStorage.getItem('hour 10'));
-  $('#hour11 .description').val(localStorage.getItem('hour 11'));
-  $('#hour12 .description').val(localStorage.getItem('hour 12'));
-  $('#hour13 .description').val(localStorage.getItem('hour 13'));
-  $('#hour14 .description').val(localStorage.getItem('hour 14'));
-  $('#hour15 .description').val(localStorage.getItem('hour 15'));
-  $('#hour16 .description').val(localStorage.getItem('hour 16'));
-  $('#hour17 .description').val(localStorage.getItem('hour 17'));
-
 
 
   // creating a function to track time 
@@ -35,7 +33,7 @@ $('#currentDay').text(dayjs().format("[Today is:] dddd, MMMM D YYYY h:mm:ss"));
    
     //this is to loop over each hourblock
     $(".time-block").each(function() {
-      var blockHour = parseInt($(this).attr('id').split('hour')[1])
+      var blockHour = parseInt($(this).attr('id').split('hour-')[1])
 
       //defining rules/class to each possible outcome for background color
       if (blockHour < currentHour ) {
@@ -53,5 +51,5 @@ $('#currentDay').text(dayjs().format("[Today is:] dddd, MMMM D YYYY h:mm:ss"));
 //calling on the function  
 timer();
 
-//need to continuously update the time 
+//Save text input to show when page reloads 
 
