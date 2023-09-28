@@ -12,7 +12,7 @@ if (localStorage.getItem('hours')) {
 }
 
 // Save data to localStorage when the save button is clicked
-$('.saveBtn').on('click', function (params) {
+$('.saveBtn').on('click', function () {
   console.log('I clicked the save button');
 
   let store = [];
