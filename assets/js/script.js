@@ -13,7 +13,6 @@ if (localStorage.getItem('hours')) {
 
 // Save data to localStorage when the save button is clicked
 $('.saveBtn').on('click', function () {
-  console.log('I clicked the save button');
 
   let store = [];
 
@@ -30,7 +29,7 @@ $('.saveBtn').on('click', function () {
 // creating a function to track time 
 function timer() {
   var currentHour = dayjs().hour();
-  console.log('this is working!!')
+ 
 
   //this is to loop over each hourblock
   $(".time-block").each(function () {
@@ -52,5 +51,5 @@ function timer() {
 //calling on the function  
 timer();
 
-//Save text input to show when page reloads 
+
 
