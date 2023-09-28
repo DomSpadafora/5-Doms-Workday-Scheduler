@@ -6,6 +6,7 @@ $('#currentDay').text(dayjs().format("[Today is:] dddd, MMMM D, YYYY"));
 if (localStorage.getItem('hours')) {
   let store = JSON.parse(localStorage.getItem('hours'));
 
+  //loop through the array and set the value of each textarea for each hour
   for (let i = 0; i < store.length; i++) {
     $('textarea').eq(i).val(store[i]);
   }
@@ -15,7 +16,7 @@ if (localStorage.getItem('hours')) {
 $('.saveBtn').on('click', function () {
 
   let store = [];
-
+  //loop through each textarea and push the value into the array
   for (let i = 0; i < $('textarea').length; i++) {
     store.push($('textarea').eq(i).val());
   }
@@ -23,7 +24,6 @@ $('.saveBtn').on('click', function () {
   localStorage.setItem('hours', JSON.stringify(store));
 });
 
-//Get item from local storage if there 
 
 
 // creating a function to track time 
